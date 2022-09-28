@@ -8,9 +8,9 @@ spec:
     app: ocitutorials-preview-improve
   ports:
     - protocol: TCP
-      port: 4002
+      port: 80
       targetPort: 4000
-  type: ClusterIP
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment

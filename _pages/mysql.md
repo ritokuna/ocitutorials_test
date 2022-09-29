@@ -10,14 +10,14 @@ toc: true
 
 このページでは、MySQL Database Serviceチュートリアルをまとめています。   
 
-# MySQL Database Serviceチュートリアル
+# 1.MySQL Database Serviceチュートリアル
 
 ## 初級編　
 
 + **[クラウドでMySQL Databaseを使う](/ocitutorials/beginners/creating-mds/)**  
     MySQL Database Serviceをプロビジョニングします。まずはここから始めましょう【所要時間:約30分】
 
-# MySQL HeatWave Database Serviceチュートリアル
+# 2.MySQL HeatWave Database Serviceチュートリアル
 
 ## 初級編 - HeatWave編 - 
 

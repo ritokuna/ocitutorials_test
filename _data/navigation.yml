@@ -1,10 +1,4 @@
 main:
-  - title: "入門編"
-    description: "OCIをはじめて使う人のための基本的なチュートリアル"
-    url: /beginners/
-  - title: "応用編"
-    description: "OCIをもっと活用するためのチュートリアル"
-    url: /intermediates/
   - title: "チュートリアル一覧"
     url: /all/
   - title: "このサイトについて"

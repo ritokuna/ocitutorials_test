@@ -24,6 +24,9 @@ LoadBalancerや証明書サービスなどをはじめとした各OCIサービ�
 Oracle Database関連サービスのチュートリアルです。  
 自律型データベースサービスであるAutonomous Databaseや Exadata Database Service on Dedicated Infrastructureなどを学習できます。
 
+## [MySQL Database Service編](/ocitutorials/mysql/)
+Oracle MySQLチームが開発、管理およびサポートするOCI上で提供されるMySQL Database Serviceを学習できます。
+
 ## [Cloud Native編](/ocitutorials/cloud-native/)
 OCIで提供するCloud Native関連サービスのチュートリアルです。    
 マネージドのKubernetesサービスであるOKEやマネージドのFaaS(Functions as a Service)であるOracle Functionsを学習できます。
@@ -40,3 +43,6 @@ OCIで提供するCloud Native関連サービスのチュートリアルです�
 ## [データサイエンス/ビッグデータ編](/ocitutorials/datascience/)
 Oracle Cloud Infrastructure(OCI)のデータサイエンス/ビッグデータ関連サービスのチュートリアルです。  
 Oracleが提供するマネージドの機械学習環境Data Science ServiceやマネージドのSpark環境であるOCI Data Flowを学習できます。  
+
+## [Observability & Management編](/ocitutorials/observability/)
+さまざまなテクノロジーおよびさまざまな場所に展開された、あらゆるレイヤーにまたがるスタックに対する可視性および機械学習ベースの実用的なインサイトを提供するOracle Cloud Observability and Management Platformを学習できます。

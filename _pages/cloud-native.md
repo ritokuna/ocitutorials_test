@@ -122,3 +122,15 @@ lastmod: "2022-04-06"
 
 + **[Helidon(SE)ハンズオン](/ocitutorials/cloud-native/helidon-se-for-beginners/)**
     Helidon SEは、Oracleが提供するマイクロサービスの開発に適したJavaのマイクロフレームワークです。こちらのハンズオンは、サンプルアプリケーションの構築を通して、Helidonの特徴や使いやすさを学んでいただけるコンテンツになっています。【所要時間:約30分】
+
+# 7. Resource Manager
+
+## 初級編 
+
++ **[TerraformでOCIの構築を自動化する]([/ocitutorials/intermediates/audit-log-analytics/](https://community.oracle.com/tech/welcome/discussion/4474281/terraform%E3%81%A7oci%E3%81%AE%E6%A7%8B%E7%AF%89%E3%82%92%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%99%E3%82%8B-oracle-cloud-infrastructure%E3%82%A2%E3%83%89%E3%83%90%E3%83%B3%E3%82%B9%E3%83%89))**  
+    Terraform provider for Oracle Cloud Infastructure を利用して、OCI構築の自動化と、構成のコード化 (Infrastructure as Code) を実現する方法について学習します。【所要時間:約60分】
+
+## 中級編
+
++ **[リソース・マネージャを使ってサンプルアプリケーションをデプロイする](/ocitutorials/intermediates/resource-manager/)
+    Resource Managerを利用してアプリケーションをデプロイする方法を学びます。 【所要時間:約60分】

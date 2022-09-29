@@ -18,7 +18,7 @@ toc_label: "目次"
 
 また、このページのチュートリアルのうち、入門編を元にしたウェビナーのハンズオンも定期開催しています。最新の予定は [こちら](https://go.oracle.com/LP=93447?elqCampaignId=248187#xd_co_f=OTIyMTZlYzQtNGMxMi00YzY2LTg1ZTQtNTVkMGJkOTUwMGY0~) のウェビナー案内ページ をご確認ください。(集合形式でのハンズオン・セミナーは、感染症予防のためしばらくお休み予定です)
 
-**アーキテクチャ・センター内での検索について**  
+**本チュートリアルの誤りについて**  
 本コンテンツは、作成者が誠心誠意作成しておりますが、万が一、本ドキュメントの間違いや、不正確な記述などを見つけられた場合は、[こちら](https://github.com/oracle-japan/ocitutorials/issues)からIssue登録にてご連絡ください。
 {: .notice--info}
 
@@ -32,43 +32,39 @@ toc_label: "目次"
 
 ## チュートリアルコンテンツ一覧
 
-- [OCI入門編](/ocitutorials/beginners/)
+- **[OCI入門編](/ocitutorials/beginners/)**
 OCIの入門編チュートリアルです。  
 OCIコンソールの基本的な操作方法やネットワーク、ストレージなどの基本的なサービスについてを学習できます。
 
-- [OCI応用編](/ocitutorials/intermediates/)
+- **[OCI応用編](/ocitutorials/intermediates/)**
 OCIの応用編チュートリアルです。  
 LoadBalancerや証明書サービスなどをはじめとした各OCIサービスの応用的な使い方を学習できます。　　
 
-- [Oracle Database編](/ocitutorials/database/)
+- **[Oracle Database編](/ocitutorials/database/)**
 Oracle Database関連サービスのチュートリアルです。  
 自律型データベースサービスであるAutonomous Databaseや Exadata Database Service on Dedicated Infrastructureなどを学習できます。
 
-- [MySQL Database Service編](/ocitutorials/mysql/)
+- **[MySQL Database Service編](/ocitutorials/mysql/)**
 Oracle MySQLチームが開発、管理およびサポートするOCI上で提供されるMySQL Database Serviceを学習できます。
 
-- [Cloud Native編](/ocitutorials/cloud-native/)
+- **[Cloud Native編](/ocitutorials/cloud-native/)**
 OCIで提供するCloud Native関連サービスのチュートリアルです。    
 マネージドのKubernetesサービスであるOKEやマネージドのFaaS(Functions as a Service)であるOracle Functionsを学習できます。
 
-- [コンテンツ管理編](/ocitutorials/content-management/)
+- **[コンテンツ管理編](/ocitutorials/content-management/)**
 セキュアな情報共有とインテリジェントなコンテンツ管理基盤であるOracle Content Management（OCM）を学習できます。
 
-- [ブロックチェーン編](/ocitutorials/blockchain/)
+- **[ブロックチェーン編](/ocitutorials/blockchain/)**
 オープン・ソースのHyperledger Fabric上に構築された業界をリードするマネージド・エンタープライズ・ブロックチェーン・サービスであるOracle Blockchain Platform Cloud Serviceを学習できます。
 
-- [インテグレーション編](/ocitutorials/integration/)
+- **[インテグレーション編](/ocitutorials/integration/)**
 アプリケーション、ビジネス・プロセス、API、およびデータを迅速にモダナイズするためのエンタープライズ連携および自動化プラットフォームであるOracle Integration Cloudを学習できます。
 
-- [データサイエンス/ビッグデータ編](/ocitutorials/datascience/)
+- **[データサイエンス/ビッグデータ編](/ocitutorials/datascience/)**
 Oracle Cloud Infrastructure(OCI)のデータサイエンス/ビッグデータ関連サービスのチュートリアルです。  
 Oracleが提供するマネージドの機械学習環境Data Science ServiceやマネージドのSpark環境であるOCI Data Flowを学習できます。 
 
-- [セキュリティ編](/ocitutorials/security/)
-Oracle Cloud Infrastructure(OCI)のセキュリティ関連サービスのチュートリアルです。  
-OCIで提供するWeb Application Firewall(WAF)や様々なサービスの設定やアクティビティを継続的に監視し、即座に通知・是正するサービスであるCloud Guardなどを学習できます。
-
-- [Observability & Management編](/ocitutorials/observability/)
+- **[Observability & Management編](/ocitutorials/observability/)**
 さまざまなテクノロジーおよびさまざまな場所に展開された、あらゆるレイヤーにまたがるスタックに対する可視性および機械学習ベースの実用的なインサイトを提供するOracle Cloud Observability and Management Platformを学習できます。
 
 ## その他のお役立ち情報

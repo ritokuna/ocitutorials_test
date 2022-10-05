@@ -28,5 +28,11 @@ main:
   - title: "データサイエンス/ビッグデータ編"
     description: "OCIのデータサイエンス/ビッグデータ関連サービスのチュートリアル"
     url: /datascience/
+  - title: "セキュリティ編"
+    description: "OCIのセキュリティ関連サービスのチュートリアル"
+    url: /security/
+  - title: "運用・管理編"
+    description: "OCIの運用・管理関連サービスのチュートリアル"
+    url: /management/
   - title: "このサイトについて"
     url: /about/

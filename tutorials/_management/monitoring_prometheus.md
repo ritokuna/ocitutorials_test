@@ -6,10 +6,9 @@ layout: single
 tags:
  - intermediate
 header:
- teaser: "/intermediates/monitoring_prometheus/prom1.png"
- overlay_image: "/intermediates/monitoring_prometheus/prom1.png"
+ teaser: "/management/monitoring_prometheus/prom1.png"
+ overlay_image: "/management/monitoring_prometheus/prom1.png"
  overlay_filter: rgba(34, 66, 55, 0.7)
-
 ---
 
 **チュートリアル概要説明**  

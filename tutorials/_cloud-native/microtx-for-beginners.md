@@ -62,7 +62,7 @@ MicroTx|2つのアプリケーション間のトランザクション一貫性�
 -|-
 クライアントID | MicroTxが利用する認証情報を作成し、通信を保護するためのIdentity Provider(このチュートリアルではIdentity Cloud Serviceを利用)アプリケーションのクライアントID
 クライアントシークレット | MicroTxが利用する認証情報を作成し、通信を保護するためのIdentity Provider(このチュートリアルではIdentity Cloud Serviceを利用)アプリケーションのクライアント・シークレット
-ディスカバリーエンドポイント | Identity Provider(このチュートリアルではIdentity Cloud Serviceを利用)のOpenID Connect Discoveryエンドポイント
+jwks_uri | アプリケーションが利用するトークン(JWT)を検証するための公開鍵の情報を含んだエンドポイント
 ユーザ名|OCIのリソース操作に必要なユーザ名です。今回は、OCI DevOpsのGit Repositoryへのアクセスに利用します。
 認証トークン| OCIのリソース操作に必要なトークンです。今回は、OCI DevOpsのGit Repositoryへのアクセスに利用します。
 オブジェクト・ストレージ・ネームスペース|OCIRへのアクセスやOCI DevOpsのGit Repositoryへのアクセスに必要な情報です。
@@ -114,7 +114,7 @@ Timezone|Japan
 ![00-06.png](00-06.png)
 
 **`Confidential Application(機密アプリケーション)`について**  
-Identity Cloud Serviceでは、Confidential Application(機密アプリケーション)を利用することでOAuth2.0を利用したアプリケーションを構築することができます。  
+Identity Cloud Serviceでは、Confidential Application(機密アプリケーション)を利用することでOAuth 2.0を利用したアプリケーションを構築することができます。  
 今回はMictroTxがこのConfidential Application(機密アプリケーション)の設定を利用します。  
 {: .notice--info}
 
@@ -169,13 +169,13 @@ Activateされると以下の画面が表示されます。
 
 これで、Ideneity Cloud Serviceの機密アプリケーション作成は完了です。
 
-### 0-2. ディスカバリーエンドポイントの確認
+### 0-2. jwks_urlの確認
 
 ここでは、MicroTxに設定する以下の項目を確認します。
 
 項目|説明
 -|-
-ディスカバリーエンドポイント | Identity Provider(このチュートリアルではIdentity Cloud Serviceを利用)のOpenID Connect Discoveryエンドポイント
+jwks_uri | アプリケーションが利用するトークン(JWT)を検証するための公開鍵の情報を含んだエンドポイント
 
 Identity Cloud Serviceのディスカバリーエンドポイントは以下の形式になっています。
 
@@ -200,6 +200,8 @@ https://idcs-xxxxxxxxxxxxxxxxxxxxxxxxxx.identity.oraclecloud.com/.well-known/ope
 となります。
 
 このURLにブラウザからアクセスし、以下のような画面が表示されればOKです。  
+
+表示された情報の中で、`jwks_uri`と書かれている行をメモしておきます。
 このURLは後ほど利用するので、メモ帳などに控えておいてください。
 
 ![00-18.png](00-18.png)
@@ -859,17 +861,6 @@ Operator SDKは、Kubernetes Operatorを効率的に開発するためのSDKに�
 Operator SDKについては[こちら](https://sdk.operatorframework.io/)、オペレータ・ライフサイクル・マネージャ(OLM)については[こちら](https://olm.operatorframework.io/)をご確認ください。  
 {: .notice--info}
 
-**[3-5. 【オプション】microprofile-config.propertiesの更新](#3-5-オプションmicroprofile-configpropertiesの更新)について**  
-こちらは、オプション手順になっており、[3-2. ATPのプロビジョニング](#3-2-atpのプロビジョニング)でATPのデータベース名(`dbName`)を変更する方向けの手順です。(主に集合ハンズオンなど複数人で同一環境を共有されている皆様向けです)  
-それ以外の方は、スキップしてください。
-{: .notice--warning}
-
-**[3-6. 【オプション】Oracle SQL Developerを利用したサンプルデータ登録](#3-6-オプションoracle-sql-developerを利用したサンプルデータ登録)について**  
-こちらは、オプション手順になっており、[3-3. サンプルデータの登録](#3-3-サンプルデータの登録)のOracle SQL Developer向け手順です。  
-[3-3. サンプルデータの登録](#3-3-サンプルデータの登録)にて、SQL Developer Web(ブラウザ版)でのサンプルデータ登録が上手くいかない方はこちらの手順を実施してサンプルデータ登録を行ってください。  
-それ以外の方は、この手順はスキップしてください。  
-{: .notice--warning}
-
 まずは、Operator SDKのインストールを行います。  
 
 [Cloud Shellを起動](/ocitutorials/cloud-native/oke-for-commons/#3cli実行環境cloud-shellの準備)します。  
@@ -1048,6 +1039,14 @@ kubectl create secret generic admin-passwd --from-literal=password=okehandson__O
 kubectl create secret generic wallet-passwd --from-literal=walletPassword=okehandson__Oracle1234 -n otmm
 ```
 
+また、データベースにアクセスするためのユーザ名とパスワードも作成しておきます。  
+
+```sh
+kubectl create secret -n otmm generic customized-db-cred \
+--from-literal=user_name=admin \
+--from-literal=password=microtxhandson__Oracle1234
+```
+
 {% capture notice %}**Secretを誤って作成してしまった場合**  
 誤って作成してしまった場合等に削除する場合は以下のコマンドを実行。
 ```
@@ -1102,7 +1101,7 @@ spec:
   isFreeTier: true
   licenseModel: LICENSE_INCLUDED
   wallet:
-    walletName: okeatp
+    walletName: okeatp1
     walletPassword:
       secret:
         secretName: wallet-passwd
@@ -1128,7 +1127,7 @@ spec:
   isFreeTier: false
   licenseModel: LICENSE_INCLUDED
   wallet:
-    walletName: okeatp
+    walletName: okeatp2
     walletPassword:
       secret:
         secretName: wallet-passwd
@@ -1270,7 +1269,13 @@ kubectl apply -f microtx-handson/k8s/app/network.yaml
 以下のような出力になればデプロイは完了です。  
 
 ```sh
-$ kubectl get all -n otmm
+$ kubectl get pods -n otmm
+NAME                            READY   STATUS    RESTARTS   AGE
+console-78f74ddc9b-lm6sz        2/2     Running   2          20h
+flight-65df549db9-52txd         2/2     Running   2          20h
+hotel-5c65684d7c-m6mx8          2/2     Running   2          20h
+otmm-tcs-0                      2/2     Running   2          22h
+trip-manager-7fcd44f6c4-vscmz   2/2     Running   0          145m
 ```
 
 3.MicroTxを体験しよう

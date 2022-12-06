@@ -560,13 +560,29 @@ MicroTxはhelmを利用してインストールされるため、ここでは`va
 
 今回は`otmm-22.3/otmm/helmcharts/quickstart/oke/qs-oke-values.yaml`を利用します。  
 
-`qs-oke-values.yaml`を開きます。 
+`qs-oke-values.yaml`を開きます。  
 
 ```sh
 vim otmm-22.3/otmm/helmcharts/quickstart/oke/qs-oke-values.yaml
 ```
 
-まず、65行目~72行目を書き換えます。  
+まず、21行目~27行目を書き換えます。  
+
+```yaml
+# TMM Container image information
+tmmImage:
+  # Image path in private Container registry
+  image: tmm:22.3
+  imagePullPolicy: IfNotPresent
+  # The kubernetes secret for pulling TMM Container image from the private container registry
+  imagePullSecret: regcred
+```
+
+key|value|
+-|-
+image|`microtx-handson`([0-3-5. OCIRのレポジトリ作成](#0-3-5-ocirのレポジトリ作成)で作成したレポジトリ名)
+
+次に、65行目~72行目を書き換えます。  
 
 ```yaml
   #Authorization settings
@@ -589,7 +605,7 @@ identityProviderName|"IDCS"
 identityProviderUrl|[0-2. jwks_urlの確認](#0-2-jwks_urlの確認)で確認した<tenant-base-url>
 identityProviderClientId|[0-1. Ideneity Cloud Serviceの機密アプリケーション作成](#0-1-ideneity-cloud-serviceの機密アプリケーション作成)で作成した`クライアントID`
 
-次に85行目〜92行目を書き換えます。  
+最後に85行目〜92行目を書き換えます。  
 
 ```yaml
 # Authentication using JWT token. Provide JWT token issuer url

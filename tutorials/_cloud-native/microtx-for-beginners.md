@@ -586,7 +586,7 @@ key|value|
 enabled|"true"
 authTokenPropagationEnabled|"true"
 identityProviderName|"IDCS"
-identityProviderUrl|[0-2. ディスカバリーエンドポイントの確認](#0-2-ディスカバリーエンドポイントの確認)で確認した<tenant-base-url>
+identityProviderUrl|[0-2. jwks_urlの確認](#0-2-jwks_urlの確認)で確認した<tenant-base-url>
 identityProviderClientId|[0-1. Ideneity Cloud Serviceの機密アプリケーション作成](#0-1-ideneity-cloud-serviceの機密アプリケーション作成)で作成した`クライアントID`
 
 次に85行目〜92行目を書き換えます。  
@@ -607,7 +607,7 @@ authentication:
 key|value|
 -|-
 issuer|"https://identity.oraclecloud.com"
-jwksUri|[0-2. ディスカバリーエンドポイントの確認](#0-2-ディスカバリーエンドポイントの確認)で確認した`ディスカバリーエンドポイント`
+jwksUri|[0-2. jwks_urlの確認](#0-2-jwks_urlの確認)で確認した`jwks_uri`
 
 これで、MicroTxのhelm chartの編集は完了です。  
 
@@ -1253,7 +1253,7 @@ vim microtx-handson/k8s/app/app.yaml
 
 項目|説明
 -|-
-`IDCS_URL`の`value` | [0-2. ディスカバリーエンドポイントの確認](#0-2-ディスカバリーエンドポイントの確認)で確認した`<tenant-base-url>`
+`IDCS_URL`の`value` | [0-2. jwks_urlの確認](#0-2-jwks_urlの確認)で確認した`<tenant-base-url>`
 `IDCS_CLIENT_ID`の`value` | [0-1. Ideneity Cloud Serviceの機密アプリケーション作成](#0-1-ideneity-cloud-serviceの機密アプリケーション作成)で作成した`クライアントID`
 `IDCS_CLIENT_SECRET`の`value` | [0-1. Ideneity Cloud Serviceの機密アプリケーション作成](#0-1-ideneity-cloud-serviceの機密アプリケーション作成)で作成した`クライアント・シークレット`
 

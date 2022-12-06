@@ -786,11 +786,10 @@ Adding label 'istio-injection=enabled' to namespace 'otmm' for enabling istio en
 Enter docker image registry (Example: iad.ocir.io): 
 ```
 
-次にOCIRのレポジトリ名を入力します。  
-入力値は`<ご自身が利用されているリージョンのリージョン・コード>.ocir.io/<オブジェクトストレージネームスペース>/otmm-app`となります。  
-`<オブジェクトストレージネームスペース>`は[0-3-3. テナンシ名とオブジェクト・ストレージ・ネームスペースの確認](#0-3-3-テナンシ名とオブジェクトストレージネームスペースの確認)で確認した`オブジェクトストレージネームスペース`になります。  
-`otmm-app`は[0-3-5. OCIRのレポジトリ作成](#0-3-5-ocirのレポジトリ作成)で作成したレポジトリ名です。  
-例えば、東京リージョンの場合は、`nrt.ocir.io/sampletenant/otmm-app`となります。  
+次にOCIRのパスを入力します。  
+入力値は`<ご自身が利用されているリージョンのリージョン・コード>.ocir.io/<オブジェクトストレージネームスペース>`となります。  
+`<オブジェクトストレージネームスペース>`は[0-3-3. テナンシ名とオブジェクト・ストレージ・ネームスペースの確認](#0-3-3-テナンシ名とオブジェクトストレージネームスペースの確認)で確認した`オブジェクトストレージネームスペース`になります。    
+例えば、東京リージョンの場合は、`nrt.ocir.io/sampletenant`となります。  
 
 ```sh
 Enter docker image registry prefix for image tagging. (This is a requirement to tag and push images to the registry). Example: iad.ocir.io/oabcs1 

@@ -1232,46 +1232,19 @@ kubectl patch service tracing -n istio-system -p '{"spec": {"type": "LoadBalance
 ここでは、サンプルアプリケーションのデプロイを行います。  
 サンプルアプリケーションをデプロイするためのManifestは既にGitHubレポジトリに用意しているので、そちらを利用します。  
 
-デプロイする前にManifestの一部を更新します。  
+デプロイする前にアプリケーションで利用するIDCSの情報をSecretとして登録します。  
 
 ```sh
-vim microtx-handson/k8s/app/app.yaml
+kubectl create secret generic idcs-cred --from-literal=IDCS_URL=<tenant-base-url> --from-literal=IDCS_CLIENT_ID=<クライアントID> --from-literal=IDCS_CLIENT_SECRET=<クライアント・シークレット> -n otmm
 ```
 
-```yaml
-    spec:
-      containers:
-        - name: console
-          image: icn.ocir.io/orasejapan/console
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8084
-          resources:
-            limits:
-              memory: "500Mi"
-              cpu: "250m"
-          env:
-            - name: IDCS_URL
-              value: https://idcs-f0017ddeef0241cfbd70e057c032ff44.identity.oraclecloud.com
-            - name: IDCS_CLIENT_ID
-              value: 6a7840b6a440462d84407261783327b7
-            - name: IDCS_CLIENT_SECRET
-              value: 09c12f31-5e67-4230-8ee1-ba2314dcc8e1
-            - name: SERVICE_NAME
-              value: console
-            - name: TRIP_SERVICE_URL
-              value: http://trip-manager:8080/trip-service/api/trip
-      imagePullSecrets:
-        - name: regcred
-```
-
-307行目〜312行目を以下のように更新し、保存します。  
+以下のパラメータを設定します。  
 
 項目|説明
 -|-
-`IDCS_URL`の`value` | [0-2. jwks_urlの確認](#0-2-jwks_urlの確認)で確認した`<tenant-base-url>`
-`IDCS_CLIENT_ID`の`value` | [0-1. Ideneity Cloud Serviceの機密アプリケーション作成](#0-1-ideneity-cloud-serviceの機密アプリケーション作成)で作成した`クライアントID`
-`IDCS_CLIENT_SECRET`の`value` | [0-1. Ideneity Cloud Serviceの機密アプリケーション作成](#0-1-ideneity-cloud-serviceの機密アプリケーション作成)で作成した`クライアント・シークレット`
+tenant-base-url | [0-2. jwks_urlの確認](#0-2-jwks_urlの確認)で確認した`<tenant-base-url>`
+クライアントID | [0-1. Ideneity Cloud Serviceの機密アプリケーション作成](#0-1-ideneity-cloud-serviceの機密アプリケーション作成)で作成した`クライアントID`
+クライアント・シークレット | [0-1. Ideneity Cloud Serviceの機密アプリケーション作成](#0-1-ideneity-cloud-serviceの機密アプリケーション作成)で作成した`クライアント・シークレット`
 
 この情報はサンプルアプリケーションのコンソール画面でのログインとバックエンドのサービスを呼び出すためのトークンを取得するために利用します。  
 

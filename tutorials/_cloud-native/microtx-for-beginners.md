@@ -191,7 +191,7 @@ https://<tenant-base-url>/.well-known/openid-configuration
 https://idcs-xxxxxxxxxxxxxxxxxxxxxxxxxx.identity.oraclecloud.com/ui/v1/adminconsole
 ```
 
-`idcs-xxxxxxxxxxxxxxxxxxxxxxxxxx.identity.oraclecloud.com`の部分が<tenant-base-url>となるので、ディスカバリーエンドポイントのURLは
+`idcs-xxxxxxxxxxxxxxxxxxxxxxxxxx.identity.oraclecloud.com`の部分が`<tenant-base-url>`となるので、ディスカバリーエンドポイントのURLは
 
 ```
 https://idcs-xxxxxxxxxxxxxxxxxxxxxxxxxx.identity.oraclecloud.com/.well-known/openid-configuration
@@ -279,7 +279,7 @@ OCIコンソール画面右上の人型のアイコンをクリックし、テ�
 
 ここでは、ATPをプロビジョニングする際に利用するコンパートメントOCIDの確認を行います。  
 
-CIコンソールのハンバーガメニューより、「アイデンティティとセキュリティ」メニューの「コンパートメント」をクリックします。  
+OCIコンソールのハンバーガメニューより、「アイデンティティとセキュリティ」メニューの「コンパートメント」をクリックします。  
 
 ![0-015.jpg](0-015.jpg)
 
@@ -600,9 +600,8 @@ image|`microtx-handson`([0-3-5. OCIRのレポジトリ作成](#0-3-5-ocirのレ�
 key|value|
 -|-
 enabled|"true"
-authTokenPropagationEnabled|"true"
 identityProviderName|"IDCS"
-identityProviderUrl|[0-2. jwks_urlの確認](#0-2-jwks_urlの確認)で確認した<tenant-base-url>
+identityProviderUrl|[0-2. jwks_urlの確認](#0-2-jwks_urlの確認)で確認した`<tenant-base-url>`
 identityProviderClientId|[0-1. Ideneity Cloud Serviceの機密アプリケーション作成](#0-1-ideneity-cloud-serviceの機密アプリケーション作成)で作成した`クライアントID`
 
 最後に85行目〜92行目を書き換えます。  
@@ -635,10 +634,14 @@ jwksUri|[0-2. jwks_urlの確認](#0-2-jwks_urlの確認)で確認した`jwks_uri
 `istioctl`は[こちら](https://istio.io/latest/docs/reference/commands/istioctl/)をご確認ください。
 {: .notice--info}
 
-以下のコマンドを実行します。  
+以下の2つのコマンドを実行します。  
 
 ```sh
 curl -sL https://istio.io/downloadIstioctl | sh -
+```
+
+```sh
+curl -L https://istio.io/downloadIstio | sh -
 ```
 
 次にディレクトリに移動します。  
@@ -727,40 +730,14 @@ Waiting for Istio-ingressgateway loadbancer to be provisioned. Will try again in
 Waiting for Istio-ingressgateway loadbancer to be provisioned. Will try again in 80 seconds.
 ```
 
-次にIstio Ingress GatewayのTLS証明書を作成するためのの情報を入力しますが、ここは任意で構いません。  
-入力するパスワードは計4回です。  
-
-```sh
-Creating a self signed certificate to enable TLS connection to transaction coordinator.
-Enter the system/keytool password when prompted. This is required to connect to transaction coordinator running on TLS and hence the certificates should be trusted.Error from server (NotFound): secrets "tls-credential" not found
-Warning: use -cacerts option to access cacerts keystore
-Enter keystore password:  
-keytool error: java.io.IOException: Keystore was tampered with, or password was incorrect
-Warning: use -cacerts option to access cacerts keystore
-Enter keystore password:  
-keytool error: java.io.IOException: Keystore was tampered with, or password was incorrect
-Generating a RSA private key
-.....................+++++
-...........................................+++++
-writing new private key to '/home/opc/otmm-22.3/certificates/tmm.dev.key'
------
-Generating a RSA private key
-......+++++
-.............................+++++
-writing new private key to '/home/opc/otmm-22.3/certificates/demo.tmm.dev.key'
------
-Signature ok
-subject=CN = demo.tmm.dev, O = hello world from tmm.dev
-Getting CA Private Key
-129.80.236.89  demo.tmm.dev
-Warning: use -cacerts option to access cacerts keystore
-Enter keystore password:  
-keytool error: java.io.IOException: Keystore was tampered with, or password was incorrect
-Warning: use -cacerts option to access cacerts keystore
-Enter keystore password:  
-keytool error: java.io.IOException: Keystore was tampered with, or password was incorrect
-secret/tls-credential created
-```
+{% capture notice %}**IngressのTLS証明書作成について**  
+スクリプトの中でTLS証明書を作成するプロセスがありますが、条件によってはパスワードを複数回聞かれる可能性があります。  
+その場合は、任意のパスワードを入力してください。  
+![0-018.jpg](0-018.jpg)
+{% endcapture %}
+<div class="notice--warning">
+  {{ notice | markdownify }}
+</div>
 
 次にMicrotxのコンテナイメージをプッシュするレジストリを入力します。  
 ここではOCIRを利用します。  

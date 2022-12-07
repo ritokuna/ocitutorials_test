@@ -733,7 +733,6 @@ Waiting for Istio-ingressgateway loadbancer to be provisioned. Will try again in
 {% capture notice %}**IngressのTLS証明書作成について**  
 スクリプトの中でTLS証明書を作成するプロセスがありますが、条件によってはパスワードを複数回聞かれる可能性があります。  
 その場合は、任意のパスワードを入力してください。  
-![0-018.jpg](0-018.jpg)
 {% endcapture %}
 <div class="notice--warning">
   {{ notice | markdownify }}

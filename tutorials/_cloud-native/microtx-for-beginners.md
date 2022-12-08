@@ -131,7 +131,7 @@ Name|`otmm-app`|今回利用するConfidential Application(機密アプリケー
 key|value|説明
 -|-
 Allowd Grant Type|`Resource Owner`/`Client Credencials`/`JWT Assertion`/`Refresh Token`|許可する認可タイプ
-Redirect URL|今回はサンプルUIのURL。たとえば`https://xxx.xxx.xxx.xxx/apps`|認可後にリダイレクトされるURL
+Redirect URL|`https://google.com`(他の任意のURLでもOK)|今回は利用しないですが、必須項目なので任意の値
 
 ![00-08.png](00-08.png)
 
